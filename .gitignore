@@ -15,5 +15,6 @@ runs/
 *.pth
 
 # Optional external embeddings
+driver_genes/meta/data_human_False_maglap32_4q0.1_torch.pt
 driver_genes/meta/GenePT_gene_embedding_ada_text.pickle
 driver_genes/meta/gene_embeddings_scgpt.pkl
