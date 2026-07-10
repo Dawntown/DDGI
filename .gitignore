@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.egg-info/
+.env
+.venv
+.DS_Store
+
+# Generated data and outputs
+datasets/
+results/
+lightning_logs/
+runs/
+*.ckpt
+*.pth
+
+# Optional external embeddings
+driver_genes/meta/GenePT_gene_embedding_ada_text.pickle
+driver_genes/meta/gene_embeddings_scgpt.pkl

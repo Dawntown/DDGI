@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ddgi"
+version = "0.1.0"
+description = "Cross-attention DDGI model for driver gene identification from single-cell perturbation data"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "scikit-misc",
+    "scanpy",
+    "pyyaml",
+    "pytorch-lightning",
+    "torchmetrics",
+    "tensorboard",
+    "tqdm",
+    "matplotlib",
+    "seaborn",
+    "jupyterlab",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["driver_genes*"]
+
+[tool.setuptools.package-data]
+driver_genes = ["meta/*.yaml", "meta/*.csv"]

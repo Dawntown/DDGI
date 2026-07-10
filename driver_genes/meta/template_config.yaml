@@ -1,0 +1,64 @@
+info:
+    description: 'Evaluate the prioritization power among candidate genes'
+    date: '2025-07-28'
+    version: '1.0.2'
+
+trainer:
+    job_name: 'schmidt_tutorial'
+    version: 'stimulated' # will be replaced by the version in the data_file
+    output_dir: '../results'
+    max_epochs: 500
+    device: 'cuda'
+    train_metrics: ['RelPos', 'label#AUROC']
+    test_metrics: 'all'
+    bar_metrics: ['RelPos', 'label#AUROC']
+    monitor_metric: 'RelPos'
+    monitor_mode: 'max'
+    debugging: false
+    early_stopping: true
+    patience: 10
+    monitor_ma_window: 5
+    learning_rate: 0.001
+    mixing_strategy: 'uncertainty'
+    cotrain_weight: 1.0
+    loss_weights:
+        vae: 1.0
+        dis: 10.0
+        cls: 1000.0
+    seed: 42 # for model initialization
+
+
+dataset:
+    data_dir: '../datasets/schmidt_tutorial'
+    adata_file: 'preprocessed.h5ad'
+    split_file: 'split_trainonstimulated.csv'
+    sample_size: 50
+    batch_size: 512
+    num_workers: 1
+    layer_name: 'X'
+    var_subset: 'highly_variable'
+    cotrain_mode: false
+    condition_key: 'perturbation'
+    source_cell: 'control'
+    sample_neg: true
+    resampling_mode: true
+    
+identifier:
+    organism: null
+    finetune: false
+    rec_loss: 'mse'
+    dis_loss: 'edist_euclidean'
+    cls_loss: 'focal_loss'
+
+
+extractor:
+    dim_genes: null
+    dim_hidden: 512
+    num_layers: 2
+    dim_latent: 128
+    dropout: 0.1
+    use_batch_norm: true
+    use_layer_norm: true
+    act: 'leakyrelu'
+    temperature: 1.0
+    variational: false
