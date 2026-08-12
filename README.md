@@ -92,3 +92,7 @@ DDGI expects:
 2. A split CSV with `cell` and `split` columns. Optional `subsplit` values are used to report metrics for named groups.
 
 By default, perturbation labels are read from `adata.obs["perturbation"]`, and control cells are labeled `control`.
+
+---
+
+Repository for code of analysis and visualisation related to the manuscript: https://github.com/Dawntown/DDGI-reproducibility.
